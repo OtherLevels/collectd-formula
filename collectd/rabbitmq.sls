@@ -5,7 +5,7 @@ include:
 
 collectd-rabbitmq-module:
   pip.installed:
-  - name: collectd-rabbitmq
+  - name: git+https://github.com:OtherLevels/collectd-rabbitmq.git@otherlevels
   - require_in:
     - service: collectd-service
   - watch_in:
