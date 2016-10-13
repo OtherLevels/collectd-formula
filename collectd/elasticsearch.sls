@@ -6,7 +6,7 @@ include:
 collectd-elasticsearch-module:
   git.latest:
   - name: https://github.com/OtherLevels/collectd-elasticsearch
-  - rev: {{ collectd_settings.plugins.elasticsearch.gitrevision }}
+  - rev: otherlevels
   - target: /usr/share/collectd/collectd-elasticsearch
   - require_in:
     - service: collectd-service
