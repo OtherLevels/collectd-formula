@@ -5,7 +5,7 @@ include:
 
 collectd-elasticsearch-module:
   git.latest:
-  - name: https://github.com/signalfx/collectd-elasticsearch
+  - name: https://github.com/OtherLevels/collectd-elasticsearch
   - rev: {{ collectd_settings.plugins.elasticsearch.gitrevision }}
   - target: /usr/share/collectd/collectd-elasticsearch
   - require_in:
