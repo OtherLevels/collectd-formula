@@ -5,7 +5,7 @@ include:
 
 docker-collectd-plugin:
   git.latest:
-  - name: https://github.com/signalfx/docker-collectd-plugin
+  - name: https://github.com/lebauce/docker-collectd-plugin
   - target: /usr/share/collectd/docker-collectd-plugin
   - require_in:
     - service: collectd-service
