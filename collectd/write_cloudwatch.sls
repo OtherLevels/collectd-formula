@@ -47,8 +47,8 @@ collect-cloudwatch-configure:
     - group: root
     - mode: 0644
     - template: jinja
-    - require:
-      - cmd: collect-cloudwatch-install
+    - require_in:
+      - file: {{ collectd_settings.plugindirconfig }}/write_cloudwatch.conf
     - watch_in:
       - service: collectd-service
 
