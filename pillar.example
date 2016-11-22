@@ -197,3 +197,8 @@ collectd:
         - '^queue'
       ignore_exchange_regex:
         - '^exchange'
+    cloudwatch:
+      credentials_path: /root/.aws/cloudwatch
+      debug: 'True'
+      region: 'us-west-2'
+
