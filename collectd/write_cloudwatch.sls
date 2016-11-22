@@ -2,7 +2,6 @@
 
 include:
   - collectd
-  - collectd.python
 
 collectd-cloudwatch-dir:
   file.directory:
