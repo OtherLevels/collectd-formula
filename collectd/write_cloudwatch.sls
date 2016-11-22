@@ -17,6 +17,8 @@ collectd-cloudwatch-download:
     - name: curl -sL https://github.com/awslabs/collectd-cloudwatch/tarball/master -o /tmp/collectd-cloudwatch.tar
     - creates: /tmp/collectd-cloudwatch.tar
     - unless: test -d /opt/collectd-plugins
+    - require:
+      - file: collectd-cloudwatch-dir
 
 collectd-cloudwatch-extract:
   archive.extracted:
@@ -27,12 +29,14 @@ collectd-cloudwatch-extract:
     - archive_format: tar
     - tar_options: --strip-components=1
     - require:
-      - file: collectd-cloudwatch-dirs
+    - cmd: collectd-cloudwatch-download
 
 collect-cloudwatch-install:
   cmd.run:
     - name: mv /tmp/collectd-cloudwatch/src /opt/collectd-plugins
     - creates: /opt/collectd-plugins
+    - require:
+      - archive: collectd-cloudwatch-extract
     - unless: test -d /opt/collectd-plugins
 
 collect-cloudwatch-configure:
@@ -43,6 +47,8 @@ collect-cloudwatch-configure:
     - group: root
     - mode: 0644
     - template: jinja
+    - require:
+      - cmd: collect-cloudwatch-install
     - watch_in:
       - service: collectd-service
 
