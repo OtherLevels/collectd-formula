@@ -29,7 +29,7 @@ collectd-cloudwatch-extract:
     - archive_format: tar
     - tar_options: --strip-components=1
     - require:
-    - cmd: collectd-cloudwatch-download
+      - cmd: collectd-cloudwatch-download
 
 collect-cloudwatch-install:
   cmd.run:
