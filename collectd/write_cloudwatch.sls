@@ -27,6 +27,7 @@ collectd-cloudwatch-extract:
     - group: root
     - archive_format: tar
     - tar_options: --strip-components=1
+    - if_missing: /tmp/collectd-cloudwatch/src
     - require:
       - cmd: collectd-cloudwatch-download
 
@@ -41,7 +42,7 @@ collect-cloudwatch-install:
 collect-cloudwatch-configure:
   file.managed:
     - name: /opt/collectd-plugins/cloudwatch/config/plugin.conf
-    - source: salt://collectd/files/cloudwatch.conf
+    - source: salt://collectd/files/cloudwatch_plugin.conf
     - user: root
     - group: root
     - mode: 0644
