@@ -27,7 +27,7 @@ collectd-cloudwatch-extract:
     - group: root
     - archive_format: tar
     - tar_options: --strip-components=1
-    - if_missing: /tmp/collectd-cloudwatch/src
+    - if_missing: /opt/collectd-plugins
     - require:
       - cmd: collectd-cloudwatch-download
 
