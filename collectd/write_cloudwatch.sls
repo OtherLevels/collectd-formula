@@ -3,6 +3,12 @@
 include:
   - collectd
 
+pip-requests-module:
+  pip.installed:
+    - name: requests >= 2.12
+    - require_in:
+      - file: collect-cloudwatch-configure
+
 collectd-cloudwatch-dir:
   file.directory:
     - names: 
@@ -37,6 +43,8 @@ collect-cloudwatch-install:
     - creates: /opt/collectd-plugins
     - require:
       - archive: collectd-cloudwatch-extract
+    - require_in:
+      - file: collect-cloudwatch-configure
     - unless: test -d /opt/collectd-plugins
 
 collect-cloudwatch-configure:
@@ -47,8 +55,6 @@ collect-cloudwatch-configure:
     - group: root
     - mode: 0644
     - template: jinja
-    - require_in:
-      - file: {{ collectd_settings.plugindirconfig }}/write_cloudwatch.conf
     - watch_in:
       - service: collectd-service
 
