@@ -33,7 +33,7 @@ collectd-cloudwatch-extract:
     - group: root
     - archive_format: tar
     - options: --strip-components=1
-    - if_missing: /opt/collectd-plugins
+    - unless: test -d /opt/collectd-plugins
     - require:
       - cmd: collectd-cloudwatch-download
 
